@@ -54,7 +54,7 @@ class(arb1)
 print(arb1)
 plot(arb1)
 
-# AQui volvemos a asignar la clase phylo
+# 
 # Reassign class "phylo" to tree (arb1)
 class(arb1) <- "phylo"
 plot(arb1)
@@ -62,9 +62,9 @@ plot(arb1)
 class(arb1) <- "Multiphylo"
 plot(arb1)
 # but class "Multiphylo", the object must have more than one tree 
-tr3 <- rmtree(n)#n arbolitos
+tr3 <- rmtree(n)#n trees
 # for example
-MyTM<- list() # creamos una lista vacia
+MyTM<- list() # create a list empty
 MyTM[[1]] <- arb1
 MyTM[[2]] <- arb1
 str(MyTM)
@@ -107,7 +107,6 @@ ref <- paste(a, b, sep = "")
 tr <- read.tree(ref)
 tr
 
-
 # 5) Extract the sequences of the cytochrome b gene with the accession numbers U15717–U15724 (source: [116]).
 
 #(a) Print the species names of each sequence.
@@ -129,160 +128,4 @@ PrintName <- function(Codigos){
 }
 # example with the funtion PrintName
 PrintName()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#where accnum is the accession number of the family, and type is the
-#type of the alignment (see p. 44).
-#(b) Extract the tree #1000 in Pfam. Make three copies of this tree, and
-#give them branch lengths (i) all equal to one, (ii) so that the node
-#heights are proportional to the number of species, and (iii) randomly
-#extracted from a uniform distribution U [0, 0.1].
-
-T1000 <- dbtrees("treebase", 1000)
-T1000.copy1 <- T1000.copy2 <- T1000.copy3 <- T1000
-T1000.copy1 <- compute.brlen(T1000.copy1, 1)
-T1000.copy2 <- compute.brlen(T1000.copy2, "Grafen")
-T1000.copy3 <- compute.brlen(T1000.copy3, runif, 0, 0.1)
-
-#5. Extract the sequences of the cytochrome b gene with the accession num-
-#bers U15717–U15724 (source: [116]).
-x <- read.GenBank(paste("U157", 17:24, sep = ""))
-#(a) Print the species names of each sequence.
-attr(x, "species")
-#(b) Print, with a single command, the length of each sequence.
-sapply(x, length) #(lapply returns the same result as a list instead of a vector)
-#(c) Arrange the data in a matrix.
-Xmat <- matrix(unlist(x), length(x), byrow = TRUE)
-#(d) Extract and store in three matrices the first, the second, and the
-#third codon positions of all sequences. Compute their base frequencies.
-#What do you conclude?
-x1 <- Xmat[, seq(1, 1045, 3)]
-x2 <- Xmat[, seq(2, 1045, 3)]
-x3 <- Xmat[, seq(3, 1045, 3)]
-base.freq(x1)
-
-#Note that it is very easy to include these commands in a loop:
-X.position <- list()
-length(X.position) <- 3
-for (i in 1:3) X.position[[i]] <- Xmat[, seq(i, 1045, 3)]
-lapply(X.position, base.freq)
-
-#(e) Save the three matrices in three different files. Read these files, and
-#concatenate the three sets of sequences.
-
-write.dna(x1, "x1.txt")
-write.dna(x2, "x2.txt")
-write.dna(x3, "x3.txt")
-y1 <- read.dna("x1.txt")
-y2 <- read.dna("x2.txt")
-y3 <- read.dna("x3.txt")
-z <- cbind(y1, y2, y3) #z = concatenate the three sets of sequences
-
-#6.a- Write a program that will extract single nucleotide polymorphism
-#(SNP) from a sequence alignment. The output will include the posi-
-#  tion of the SNPs along the sequence and the observed bases (alleles).
-#You will include an option to output the sequence of the constant
-#sites.
 
