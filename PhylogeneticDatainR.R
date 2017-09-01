@@ -86,7 +86,7 @@ write.tree(x3, "tre3.tre")
 tre4 <- read.tree("tre1.tre")
 
 ?rmtre()
-#create a function  for MultiTree with number of tree and terminals
+#create a function  for MultiTree with number of trees and terminals
 #mitree <- rmtree(NumeroDeArboles,numeroDeTerminales) # for create the funtion
 CreateMuliTree <- function(NumeroDeArboles=1,numeroDeTerminales=10){
   mitree <- rmtree(NumeroDeArboles, numeroDeTerminales)
