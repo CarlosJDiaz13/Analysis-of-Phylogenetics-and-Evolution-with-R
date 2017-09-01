@@ -3,4 +3,4 @@ In this repository I will upload weekly topics developed from the book Analysis 
 Cap_2 -->  First Steps in R for Phylogeneticists
 
 Cap_3 -->  Phylogenetic Data in R
-"This chapter details how phylogenetic data are handled in R. The issues discussed here will interest all users."
+"This chapter details how phylogenetic data are handled in R."
